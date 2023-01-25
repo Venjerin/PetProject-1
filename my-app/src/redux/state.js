@@ -1,4 +1,10 @@
+import { type } from "@testing-library/user-event/dist/type";
+
 // let rerenderEntireTree;
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
 let store = {
     _state: {
@@ -88,17 +94,10 @@ let store = {
     },
 }
 
-export const addPostActionCreator = () => {
-    return(
-        {type: 'ADD-POST'}
-    )
-}
-
-export const updateNewPostTextActionCreator = (text) => {
-    return(
-        {type: 'UPDATE-NEW-POST-TEXT', newText:text}
-    )
-}
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText:text})
+export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE, newMessage:text});
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE}); 
 
 export default store;
 window.store = store; 
