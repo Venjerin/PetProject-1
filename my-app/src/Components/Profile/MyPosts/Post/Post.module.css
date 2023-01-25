@@ -1,0 +1,12 @@
+.item {
+    color:rgb(144, 199, 114);
+}
+
+.item img{
+    width: 30px;
+    /* border-radius: 50%; */
+    border-bottom-left-radius: 35%;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+}

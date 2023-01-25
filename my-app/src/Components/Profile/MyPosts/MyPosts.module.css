@@ -1,0 +1,12 @@
+.item img{
+    width: 30px;
+    border-radius: 20%;
+}
+
+.postsBlock{
+    padding: 10px;
+}
+
+.posts{
+    margin-top:  10px;
+}
