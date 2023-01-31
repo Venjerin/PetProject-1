@@ -8,10 +8,10 @@ import { Routes, Route } from "react-router-dom";
 import News from './Components/News/News';
 import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
+import DialogsContainer from './Components/Dialogs/DialogsContainer';
 
 
 const App = (props) => {
-
   return (
     <div className="app-wrapper">
       <Header></Header>
@@ -20,17 +20,19 @@ const App = (props) => {
         <Routes>
           <Route
             path="/dialogs"
-            element={<Dialogs
+            element={<DialogsContainer
               dispatch = {props.dispatch}
               dialogs={props.state.profilePage.dialogs}
               messages={props.state.dialogsPage.messages}
+              store = {props.store}
               // addMessage={props.addMessage}
               newMessageText={props.state.dialogsPage.newMessageText}
               // updateNewMessage={props.updateNewMessage}
-              ></Dialogs>}></Route>
+              ></DialogsContainer>}></Route>
           <Route
             path="/profile"
             element={<Profile
+              store={props.store}
               dispatch = {props.dispatch}
               posts={props.state.profilePage.posts}
               // addPost={props.addPost}
