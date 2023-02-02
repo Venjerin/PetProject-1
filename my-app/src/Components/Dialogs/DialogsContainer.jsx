@@ -19,7 +19,8 @@ const DialogsContainer = (props) => {
     return <Dialogs updateNewMessageBody = {messageOnChange}
     sendMessage = {sendMessage}
     dialogs = {dialogs}
-    messages = {messages}></Dialogs>
+    messages = {messages}
+    newMessageText = {props.newMessageText}></Dialogs>
 };
 
 export default DialogsContainer;
