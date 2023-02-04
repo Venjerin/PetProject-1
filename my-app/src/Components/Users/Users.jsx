@@ -8,16 +8,18 @@ class Users extends React.Component {
 
     constructor(props) {
         super(props);
-        alert('NEW');
+        
+    };
+
+    componentDidMount(){
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => {
                 this.props.setUsers(response.data.items)
             });
-    }
+    };
 
     render() {
         return <div>
-            <button onClick={this.getUsers}>Get Users</button>
             {
                 this.props.users.map((u) => <div key={u.id}>
                     <span>
