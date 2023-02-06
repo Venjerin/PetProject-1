@@ -6,3 +6,11 @@
     grid-area: h;
     background-color: rgb(216, 176, 128);
 }
+
+.loginBlock{
+    float: right;
+}
+
+.loginBlock a {
+    color:white;
+}
