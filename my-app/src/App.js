@@ -31,7 +31,7 @@ const App = (props) => {
             // updateNewMessage={props.updateNewMessage}
             ></DialogsContainer>}></Route>
           <Route
-            path="/profile/*"
+            path="/profile/:userId?"
             element={<ProfileContainer
               store={props.store}
               dispatch={props.dispatch}
