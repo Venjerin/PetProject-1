@@ -9,6 +9,7 @@ import Music from './Components/Music/Music';
 import Settings from './Components/Settings/Settings';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
+import ProfileContainer from './Components/Profile/ProfileContainer';
 
 
 const App = (props) => {
@@ -30,15 +31,15 @@ const App = (props) => {
             // updateNewMessage={props.updateNewMessage}
             ></DialogsContainer>}></Route>
           <Route
-            path="/profile"
-            element={<Profile
+            path="/profile/*"
+            element={<ProfileContainer
               store={props.store}
               dispatch={props.dispatch}
               posts={props.state.profilePage.posts}
               // addPost={props.addPost}
               newPostText={props.state.profilePage.newPostText}
             // updateNewPostText={props.updateNewPostText}
-            ></Profile>}></Route>
+            ></ProfileContainer>}></Route>
           <Route
             path="/news"
             element={<News></News>}></Route>

@@ -26,7 +26,7 @@ import Dialogs from "./Dialogs";
 
 let mapStateToProps = (state) => {
     return {
-        dialogs: state.profilePage.dialogs,
+        dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
         newMessageText: state.dialogsPage.newMessageText,
     }
