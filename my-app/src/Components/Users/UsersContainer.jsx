@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
-import { follow, setCurrentPage, setUsers, setTotalUsersCount, toggleIsFetching, unfollow } from "../../redux/users-reducer";
+import { follow, setCurrentPage, setUsers, setTotalUsersCount, toggleIsFetching, unfollow, getUsersThunkCreator } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { usersAPI } from "../../api/api";
@@ -13,24 +13,28 @@ class UsersContainer extends React.Component {
     };
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
+        this.props.getUsersThunkCreator(this.props.currentPage,this.props.currentPagepageSize,usersAPI);
+        // this.props.toggleIsFetching(true);
 
-         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-        .then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount - 22750);
-        });
+        //  usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+        // .then(data => {
+        //     this.props.toggleIsFetching(false);
+        //     this.props.setUsers(data.items);
+        //     this.props.setTotalUsersCount(data.totalCount - 22750);
+        // });
     };
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-        .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items)
-            });
+
+        this.props.getUsersThunkCreator(pageNumber, this.props.currentPagepageSize,usersAPI);
+
+        // this.props.toggleIsFetching(true);
+        // usersAPI.getUsers(pageNumber, this.props.pageSize)
+        //     .then(data => {
+        //         this.props.toggleIsFetching(false);
+        //         this.props.setUsers(data.items)
+        //     });
     };
 
     render() {
@@ -60,27 +64,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber));
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setUsersTotalCountAC(totalCount));
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching));
-//         }
-//     }
-// }
 
-export default connect(mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching })(UsersContainer);
+export default connect(mapStateToProps, {
+    follow, unfollow, setUsers,
+    setCurrentPage, setTotalUsersCount, toggleIsFetching,
+    getUsersThunkCreator
+})(UsersContainer);
