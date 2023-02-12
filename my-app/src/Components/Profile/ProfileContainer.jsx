@@ -39,8 +39,6 @@ function withRouter(ProfileContainer) {
     return ComponentWithRouterProp;
 }
 
-
-
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 let mapStateToProps = (state) => ({

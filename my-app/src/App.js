@@ -20,8 +20,7 @@ const App = (props) => {
       <Navbar></Navbar>
       <div className="app-wrapper-content">
         <Routes>
-          <Route
-            path="/dialogs"
+          <Route path="/dialogs"
             element={<DialogsContainer
               dispatch={props.dispatch}
               dialogs={props.state.profilePage.dialogs}
@@ -31,8 +30,7 @@ const App = (props) => {
               newMessageText={props.state.dialogsPage.newMessageText}
             // updateNewMessage={props.updateNewMessage}
             ></DialogsContainer>}></Route>
-          <Route
-            path="/profile/:userId?"
+          <Route path="/profile/:userId?"
             element={<ProfileContainer
               store={props.store}
               dispatch={props.dispatch}
@@ -41,21 +39,16 @@ const App = (props) => {
               newPostText={props.state.profilePage.newPostText}
             // updateNewPostText={props.updateNewPostText}
             ></ProfileContainer>}></Route>
-          <Route
-            path="/news"
+          <Route path="/news"
             element={<News></News>}></Route>
-          <Route
-            path="/music"
+          <Route path="/music"
             element={<Music></Music>}></Route>
-          <Route
-            path="/settings"
+          <Route path="/settings"
             element={<Settings></Settings>}></Route>
-          <Route
-            path="/users"
+          <Route path="/users"
             element={<UsersContainer></UsersContainer>}>
           </Route>
-          <Route
-            path='/login'
+          <Route path='/login'
             element={<LoginPage></LoginPage>}>
           </Route>
         </Routes>
