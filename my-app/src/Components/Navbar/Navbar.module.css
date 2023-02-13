@@ -1,20 +1,19 @@
 .nav{
     grid-area: n;
-    background-color: rgb(61, 212, 161);
+    background-color: rgb(203, 180, 88);
     padding: 20px;
 }
 
 .item a{
-    color:rgb(68, 70, 217);
+    color:rgb(64, 67, 152);
     text-decoration: none;
-    
 }
 
 .item a:hover{
-    color:goldenrod;
+    color:rgb(2, 1, 6);
 }
 
 
 .item a:active {
-    color:rgb(166, 122, 12);
+    color:rgb(0, 0, 0);
 }

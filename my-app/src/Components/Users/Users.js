@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './users.module.css';
 import userPhoto from '../../assets/images/user.png';
 import { NavLink } from "react-router-dom";
@@ -13,12 +13,50 @@ let Users = (props) => {
         pages.push(i);
     }
 
+    const [activeIndex] = useState(0);
     return <div>
         <div>
-            {pages.map(p => {
+            {/* {pages.map(p => {
                 return <span className={props.currentPage === p ? styles.selectedPage : null}
                     onClick={(e) => { props.onPageChanged(p); }}>{p}</span>
-            })}
+            })} */}
+            
+            <div style={{ display: "flex", overflow: "hidden" }}>
+                {pages.map((p) => (
+                    <div
+                        key={p}
+                        style={{
+                            flex: 1,
+                            width: "100%",
+                            height: "100%",
+                            opacity: activeIndex === p ? 1 : 0,
+                            transition: "opacity 0.5s ease-in-out",
+                            position: "absolute",
+                            left: activeIndex === p ? 0 : "100%",
+                        }}
+                    >
+                        {p}
+                    </div>
+                ))}
+                <div style={{ display: "flex" }}>
+                    {pages.map((p) => (
+                        <button
+                            key={p}
+                            onClick={(e) => { props.onPageChanged(p)}}
+                            style={{
+                                backgroundColor: "transparent",
+                                border: "none",
+                                outline: "none",
+                                cursor: "pointer",
+                            }}
+                        >
+                             {p}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+
         </div>
         {
             props.users.map((u) => <div key={u.id}>
