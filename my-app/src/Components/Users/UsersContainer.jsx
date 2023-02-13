@@ -75,9 +75,9 @@ export default connect(mapStateToProps, {
     getUsersThunkCreator
 })(withRedirect);
 
-compose(
-    connect(mapStateToProps, {follow, unfollow, setUsers,setCurrentPage, 
-        setTotalUsersCount, toggleIsFetching, getUsersThunkCreator
-    },
-    withAuthRedirect
-)(UsersContainer))
+// compose(
+//     connect(mapStateToProps, {follow, unfollow, setUsers,setCurrentPage, 
+//         setTotalUsersCount, toggleIsFetching, getUsersThunkCreator
+//     }),
+//     withAuthRedirect
+// (UsersContainer))
