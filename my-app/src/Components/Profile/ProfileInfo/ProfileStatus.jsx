@@ -11,7 +11,6 @@ class ProfileStatus extends React.Component {
     };
 
     activateEditMode = () => {
-        console.log(this)
         this.setState({
             editMode: true
         })
@@ -26,7 +25,7 @@ class ProfileStatus extends React.Component {
 
     onStatusChange = (event) => {
         this.setState({
-            status: event.target.value
+            status: event.currentTarget.value
         });
 
     }
@@ -53,7 +52,6 @@ class ProfileStatus extends React.Component {
                         <textarea ref={this.statusInputRef} onChange={this.onStatusChange}
                             autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}>
                         </textarea>
-
                     </div>
                 }
             </div>
