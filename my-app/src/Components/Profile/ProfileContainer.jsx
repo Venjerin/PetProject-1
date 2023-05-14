@@ -38,10 +38,10 @@ function withRouter(ProfileContainer) {
         );
     }
 
-    return ComponentWithRouterProp;
+    return ComponentWithRouterProp; 
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer); 
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
@@ -52,4 +52,4 @@ export default compose(
     connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
     withRouter,
     withAuthRedirect
-)(ProfileContainer);
+)(ProfileContainer);  
