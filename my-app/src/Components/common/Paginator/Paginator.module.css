@@ -1,4 +1,22 @@
-.selectedPage{
+.paginator{
+    margin: 10px;
+}
+
+.pageNumber{
+    padding: 2px;
+    border: 1px solid gray;
+}
+
+
+.pageNumber.selectedPage{
     font-weight: bold;
-    cursor: pointer;
+    border-color: black;
+}
+
+.prevButton{
+    margin-right: 20px;;
+}
+
+.nextButton{
+    margin-left: 20px;
 }

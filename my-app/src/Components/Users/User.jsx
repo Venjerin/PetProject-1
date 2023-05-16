@@ -6,7 +6,7 @@ import styles from "./users.module.css";
 
 let User = ({ user, ...props }) => {
   return (
-    <div>
+    <div className={styles.user}>
       <div key={user.id}>
         <span>
           <div>
@@ -41,10 +41,10 @@ let User = ({ user, ...props }) => {
           <div>{user.name}</div>
           <div>{user.status}</div>
         </span>
-        <span>
+        {/* <span>
           <div>{"user.location.country"}</div>
           <div>{"user.location.city"}</div>
-        </span>
+        </span> */}
       </div>
     </div>
   );
