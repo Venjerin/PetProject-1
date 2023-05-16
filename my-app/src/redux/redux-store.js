@@ -9,16 +9,16 @@ import { reducer as formReducer } from "redux-form";
 import appReducer from "./app-reducer";
 
 let reducers = combineReducers({
-    profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
-    sidebar: sidebarReducer,
-    usersPage: usersReducer,
-    auth: authReducer,
-    form: formReducer,
-    app:appReducer
+  profilePage: profileReducer,
+  dialogsPage: dialogsReducer,
+  sidebar: sidebarReducer,
+  usersPage: usersReducer,
+  auth: authReducer,
+  form: formReducer,
+  app: appReducer,
 });
 
-let store = createStore (reducers, applyMiddleware(thunk)); 
+let store = createStore(reducers, applyMiddleware(thunk));
 
 window.store = store;
 

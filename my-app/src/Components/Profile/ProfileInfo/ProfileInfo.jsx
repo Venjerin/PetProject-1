@@ -1,27 +1,24 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import classes from './ProfileInfo.module.css';
+import classes from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-
-
-
 const ProfileInfo = (props) => {
-    if (!props.profile) {
-        return <Preloader></Preloader>
-    }
+  if (!props.profile) {
+    return <Preloader></Preloader>;
+  }
 
-    return (
-        <div>
-            {/* <div>
-                <img src='https://avatars.mds.yandex.net/i?id=884edb525425300d10ba53dd8b1ee02e9fd98c9c-8307637-images-thumbs&n=13' alt="Картинка"></img>
-            </div> */}
-            <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.large}></img>
-                <ProfileStatusWithHooks status={props.status} updateStatus= {props.updateStatus}></ProfileStatusWithHooks>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div>
+      <div className={classes.descriptionBlock}>
+        <img src={props.profile.photos.large}></img>
+        <ProfileStatusWithHooks
+          status={props.status}
+          updateStatus={props.updateStatus}
+        ></ProfileStatusWithHooks>
+      </div>
+    </div>
+  );
+};
 
 export default ProfileInfo;

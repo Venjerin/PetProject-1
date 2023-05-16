@@ -1,29 +1,33 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar.jsx";
-// import { Routes, Route } from "react-router-dom";
-import News from "./Components/News/News";
-import Music from "./Components/Music/Music";
-import Settings from "./Components/Settings/Settings";
+import { connect } from "react-redux";
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router";
+import { compose } from "redux";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import UsersContainer from "./Components/Users/UsersContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import LoginPage from "./Components/Login/Login";
-import { Route, Routes, useLocation, useNavigate, useParams } from "react-router";
-import { initializeApp } from "./redux/app-reducer";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import Music from "./Components/Music/Music";
+import News from "./Components/News/News";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
+import Settings from "./Components/Settings/Settings";
+import UsersContainer from "./Components/Users/UsersContainer";
 import Preloader from "./Components/common/Preloader/Preloader";
+import { initializeApp } from "./redux/app-reducer";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
   }
   render() {
-
-    if (!this.props.initialized){
-      return <Preloader></Preloader>
+    if (!this.props.initialized) {
+      return <Preloader></Preloader>;
     }
 
     return (
@@ -34,30 +38,11 @@ class App extends React.Component {
           <Routes>
             <Route
               path="/dialogs"
-              element={
-                <DialogsContainer
-                // dispatch={props.dispatch}
-                // dialogs={props.state.profilePage.dialogs}
-                // messages={props.state.dialogsPage.messages}
-                // store={props.store}
-                // // addMessage={props.addMessage}
-                // newMessageText={props.state.dialogsPage.newMessageText}
-                // // updateNewMessage={props.updateNewMessage}
-                ></DialogsContainer>
-              }
+              element={<DialogsContainer></DialogsContainer>}
             ></Route>
             <Route
               path="/profile/:userId?"
-              element={
-                <ProfileContainer
-                // store={props.store}
-                // dispatch={props.dispatch}
-                // posts={props.state.profilePage.posts}
-                // addPost={props.addPost}
-                // newPostText={props.state.profilePage.newPostText}
-                // updateNewPostText={props.updateNewPostText}
-                ></ProfileContainer>
-              }
+              element={<ProfileContainer></ProfileContainer>}
             ></Route>
             <Route path="/news" element={<News></News>}></Route>
             <Route path="/music" element={<Music></Music>}></Route>
@@ -76,24 +61,19 @@ class App extends React.Component {
 
 function withRouter(App) {
   function ComponentWithRouterProp(props) {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      return (
-          <App
-              {...props}
-              router={{ location, navigate, params }}
-          ></App>
-      );
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <App {...props} router={{ location, navigate, params }}></App>;
   }
 
-  return ComponentWithRouterProp; 
+  return ComponentWithRouterProp;
 }
 
 const mapStateToProps = (state) => ({
-  initialized:state.app.initialized
-})
+  initialized: state.app.initialized,
+});
 export default compose(
   withRouter,
-  connect(mapStateToProps, { initializeApp }))(App);
-
+  connect(mapStateToProps, { initializeApp })
+)(App);
