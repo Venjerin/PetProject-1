@@ -9,7 +9,7 @@ import {
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
 const MyPosts = React.memo ((props) => {
-  let postsElements = props.posts.map((post) => (
+  let postsElements =[...props.posts].reverse().map((post) => (
     <Post message={post.message} likesCount={post.likesCount}></Post>
   ));
 
