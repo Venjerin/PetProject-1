@@ -1,25 +1,25 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import { connect } from "react-redux";
-import {
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router";
+import {Route, Routes, useLocation, useNavigate, useParams} from "react-router";
 import { compose } from "redux";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import LoginPage from "./Components/Login/Login";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
 import Settings from "./Components/Settings/Settings";
 import UsersContainer from "./Components/Users/UsersContainer";
 import Preloader from "./Components/common/Preloader/Preloader";
 import { initializeApp } from "./redux/app-reducer";
+import { withSuspense } from "./hoc/withSuspense";
+
+// import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsContainer'))
+
+// import ProfileContainer from "./Components/Profile/ProfileContainer";
+const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'))
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,11 +38,11 @@ class App extends React.Component {
           <Routes>
             <Route
               path="/dialogs"
-              element={<DialogsContainer></DialogsContainer>}
+              Component={withSuspense(DialogsContainer)}
             ></Route>
             <Route
               path="/profile/:userId?"
-              element={<ProfileContainer></ProfileContainer>}
+              Component={withSuspense(ProfileContainer)}
             ></Route>
             <Route path="/news" element={<News></News>}></Route>
             <Route path="/music" element={<Music></Music>}></Route>
