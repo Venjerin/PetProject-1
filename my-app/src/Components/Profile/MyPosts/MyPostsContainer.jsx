@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { addPostActionCreator } from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
+import { compose } from "redux";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 
 // const MyPostsContainer = (props) => {
@@ -38,8 +40,24 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
+function withRouter(MyPosts) {
+    function ComponentWithRouterProp(props) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <MyPosts
+                {...props}
+                router={{ location, navigate, params }}
+            ></MyPosts>
+        );
+    }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+    return ComponentWithRouterProp; 
+}
+
+const MyPostsContainer = compose(connect(mapStateToProps, mapDispatchToProps),
+withRouter)(MyPosts);
 
 export default MyPostsContainer;
 

@@ -18,10 +18,14 @@ const MyPosts = React.memo ((props) => {
   };
 
   return (
-    <div className={classes.postsBlock}>
-      <h3>My post</h3>
-      <AddNewPostFormRedux onSubmit={onAddPost}></AddNewPostFormRedux>
-      <div className={classes.posts}>{postsElements}</div>
+    <div>
+      {!props.router.params.userId && (
+        <div className={classes.postsBlock}>
+          <h3>My post</h3>
+          <AddNewPostFormRedux onSubmit={onAddPost}></AddNewPostFormRedux>
+          <div className={classes.posts}>{postsElements}</div>
+        </div>
+      )}
     </div>
   );
 })
@@ -49,5 +53,7 @@ const AddNewPostForm = (props) => {
 const AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
   AddNewPostForm
 );
+
+
 
 export default MyPosts;
