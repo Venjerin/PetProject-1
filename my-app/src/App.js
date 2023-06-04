@@ -54,7 +54,7 @@ class App extends React.Component {
             <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           </Routes>
         </div>
-      </div>
+      </div>    
     );
   }
 }
