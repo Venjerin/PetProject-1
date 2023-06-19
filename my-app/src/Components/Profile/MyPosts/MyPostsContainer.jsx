@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addPostActionCreator } from "../../../redux/profile-reducer";
+import { addPostActionCreator } from "../../../redux/profile-reducer.ts";
 import MyPosts from "./MyPosts";
 import { compose } from "redux";
 import { useLocation, useNavigate, useParams } from "react-router";

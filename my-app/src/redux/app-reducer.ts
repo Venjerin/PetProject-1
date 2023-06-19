@@ -1,14 +1,20 @@
 import { stopSubmit } from "redux-form";
 import { authAPI } from "../api/api";
-import { getAuthUserData } from "./auth-reducer";
+import { getAuthUserData } from "./auth-reducer.ts";
+import { type } from "os";
 
 const SET_INITIALIZED_SUCCESS = "SET_INITIALIZED_SUCCESS";
 
-let initialState = {
+
+export type InitialStateType = {
+  initialized: boolean
+}
+
+let initialState: InitialStateType = {
   initialized: false,
 };
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case SET_INITIALIZED_SUCCESS:
       return {
@@ -20,7 +26,11 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export const setInitializedSuccess = () => ({ type: SET_INITIALIZED_SUCCESS });
+type InitializedSuccessActionType = {
+  type: typeof SET_INITIALIZED_SUCCESS
+}
+
+export const setInitializedSuccess = (): InitializedSuccessActionType => ({ type: SET_INITIALIZED_SUCCESS });
 
 export const initializeApp = () => (dispatch) => {
   let promise = dispatch(getAuthUserData());

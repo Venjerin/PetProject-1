@@ -11,7 +11,7 @@ import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
 import UsersContainer from "./Components/Users/UsersContainer";
 import Preloader from "./Components/common/Preloader/Preloader";
-import { initializeApp } from "./redux/app-reducer";
+import { initializeApp } from "./redux/app-reducer.ts";
 import { withSuspense } from "./hoc/withSuspense";
 
 // import DialogsContainer from "./Components/Dialogs/DialogsContainer";
