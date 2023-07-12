@@ -3,11 +3,35 @@ import { connect } from "react-redux";
 import { usersAPI } from "../../api/api";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { follow, getUsersThunkCreator, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow } from "../../redux/users-reducer.ts";
-import { getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors";
+import { getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors.ts";
 import Preloader from "../common/Preloader/Preloader";
-import Users from "./Users";
+import Users from "./Users.tsx";
+import { UserType } from "../../types/types";
+import { AppStateType } from "../../redux/redux-store";
 
-class UsersContainer extends React.Component {
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+
+type MapStatePropsType = {
+  currentPage: number
+  pageSize: number
+  isFetching: boolean
+  totalUsersCount: number
+  users: Array<UserType>
+}
+
+type MapDispatchPropsType = {
+  getUsersThunkCreator: (currentPage: number, pageSize: number, usersAPI:any)=>void
+  unfollow: (userId: number)=> void
+  follow: (userId: number)=> void
+  setCurrentPage: (pageNumber: number)=> void
+
+}
+
+type OwnPropsType = {
+  pageTitle:string
+}
+
+class UsersContainer extends React.Component<PropsType> {
   constructor(props) {
     super(props);
   }
@@ -15,17 +39,17 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.getUsersThunkCreator(
       this.props.currentPage,
-      this.props.currentPagepageSize,
+      this.props.pageSize,
       usersAPI
     );
   }
 
-  onPageChanged = (pageNumber) => {
+  onPageChanged = (pageNumber: number) => {
     this.props.setCurrentPage(pageNumber);
 
     this.props.getUsersThunkCreator(
       pageNumber,
-      this.props.currentPagepageSize,
+      this.props.pageSize,
       usersAPI
     );
 
@@ -39,7 +63,7 @@ class UsersContainer extends React.Component {
 
   render() {
     return (
-      <>
+      <><h2>{this.props.pageTitle}</h2>
         {this.props.isFetching ? <Preloader></Preloader> : null}
         <Users
           totalUsersCount={this.props.totalUsersCount}
@@ -56,7 +80,7 @@ class UsersContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType  => {
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),
@@ -68,7 +92,9 @@ let mapStateToProps = (state) => {
 
 let withRedirect = withAuthRedirect(UsersContainer);
 
-export default connect(mapStateToProps, {
+
+// <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>(mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>, mapDispatchToProps: MapDispatchToPropsParam<TDispatchProps, TOwnProps>): InferableComponentEnhancerWithProps<TStateProps & ResolveThunks<TDispatchProps>, TOwnProps>;
+export default connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
   follow,
   unfollow,
   setUsers,

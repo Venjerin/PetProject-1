@@ -9,7 +9,7 @@ import LoginPage from "./Components/Login/Login";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";
-import UsersContainer from "./Components/Users/UsersContainer";
+import UsersContainer from "./Components/Users/UsersContainer.tsx";
 import Preloader from "./Components/common/Preloader/Preloader";
 import { initializeApp } from "./redux/app-reducer.ts";
 import { withSuspense } from "./hoc/withSuspense";
@@ -49,7 +49,7 @@ class App extends React.Component {
             <Route path="/settings" element={<Settings></Settings>}></Route>
             <Route
               path="/users"
-              element={<UsersContainer></UsersContainer>}
+              element={<UsersContainer pageTitle="Пользователи"></UsersContainer>}
             ></Route>
             <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           </Routes>
