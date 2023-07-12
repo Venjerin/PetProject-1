@@ -1,5 +1,5 @@
 import { stopSubmit } from "redux-form";
-import { authAPI, securityAPI } from "../api/api";
+import { authAPI, securityAPI } from "../api/api.ts";
 
 const SET_USER_DATA = "auth/SET_USER_DATA";
 const UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
@@ -78,9 +78,9 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessAc
 });
 
 export const getAuthUserData = () => async (dispatch: any) => {
-  let response = await authAPI.me();
+  let meData = await authAPI.me();
 
-  if (response.data.resultCode === 0) {
+  if (meData.resultCode === 0) {
     let { id, login, email } = response.data.data;
     dispatch(setAuthUserData(id, email, login, true));
   }

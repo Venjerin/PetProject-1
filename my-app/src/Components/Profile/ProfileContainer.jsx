@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from "../../redux/profile-reducer.ts";
 import { Navigate, useLocation, useNavigate, useParams, } from "react-router";
-import { usersAPI } from "../../api/api";
+import { usersAPI } from "../../api/api.ts";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 

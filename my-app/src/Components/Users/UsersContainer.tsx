@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { usersAPI } from "../../api/api";
+import { usersAPI } from "../../api/api.ts";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { follow, getUsersThunkCreator, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow } from "../../redux/users-reducer.ts";
 import { getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors.ts";
