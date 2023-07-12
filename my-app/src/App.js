@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {Route, Routes, useLocation, useNavigate, useParams} from "react-router";
 import { compose } from "redux";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-import LoginPage from "./Components/Login/Login";
+import LoginPage from "./Components/Login/Login.tsx";
 import Music from "./Components/Music/Music";
 import News from "./Components/News/News";
 import Settings from "./Components/Settings/Settings";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from ".//ProfileDataForm.module.css";
-import { Input, Textarea } from "../../../common/FormsControls/FormsControls";
+import { Input, Textarea } from "../../../common/FormsControls/FormsControls.tsx";
 import classes from "../../../../Components/common/FormsControls/FormsControls.module.css";
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {

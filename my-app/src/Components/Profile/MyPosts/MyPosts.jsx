@@ -5,8 +5,8 @@ import { Field, reduxForm } from "redux-form";
 import {
   maxLengthCreator,
   requiredField,
-} from "../../../utils/validators/validators";
-import { Textarea } from "../../common/FormsControls/FormsControls";
+} from "../../../utils/validators/validators.ts";
+import { Textarea } from "../../common/FormsControls/FormsControls.tsx";
 
 const MyPosts = React.memo ((props) => {
   let postsElements =[...props.posts].reverse().map((post) => (

@@ -5,8 +5,8 @@ import DialogItem from "./DialogItem/DialogItem";
 // import { useNavigate, useNavigation } from "react-router";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
-import { Textarea } from "../common/FormsControls/FormsControls";
-import { maxLengthCreator, requiredField } from "../../utils/validators/validators";
+import { Textarea } from "../common/FormsControls/FormsControls.tsx";
+import { maxLengthCreator, requiredField } from "../../utils/validators/validators.ts";
 
 const Dialogs = (props) => {
   let dialogsElements = props.dialogs.map((dialog) => (
