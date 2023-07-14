@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import Paginator from "../common/Paginator/Paginator.tsx";
 import User from "./User";
 import { UserType } from "../../types/types.js";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 type PropsType = {
   totalUsersCount: number
@@ -25,6 +26,9 @@ let Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSi
   const [activeIndex] = useState(0);
   return (
     <div>
+
+      <UsersSearchForm></UsersSearchForm>
+
       <Paginator
         currentPage={currentPage}
         onPageChanged={onPageChanged}
@@ -41,6 +45,43 @@ let Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSi
           ></User>
         ))}
       </div>
+    </div>
+  );
+};
+
+const usersSearchFormValidate = (values: any) => {
+  const errors = {};
+  return errors;
+}
+
+type UsersSearchFormObjectType = {
+  term: string
+}
+
+const UsersSearchForm = () => {
+  const submit = (values: UsersSearchFormObjectType, { setSubmitting }: {setSubmitting: (isSubmitting: boolean) => void}) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+    }, 400);
+  };
+
+  return (
+    <div>
+      <Formik
+        initialValues={{ term: "" }}
+        validate={usersSearchFormValidate}
+        onSubmit={submit}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <Field type="text" name="term" />
+            <button type="submit" disabled={isSubmitting}>
+              Find
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
