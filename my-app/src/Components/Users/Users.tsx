@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Paginator from "../common/Paginator/Paginator.tsx";
 import User from "./User";
 import { UserType } from "../../types/types.js";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 
 type PropsType = {
   totalUsersCount: number
@@ -24,6 +25,20 @@ let Users: FC<PropsType> = ({currentPage, onPageChanged, totalUsersCount, pageSi
   }
 
   const [activeIndex] = useState(0);
+
+  // const filter:{term:string, friend:boolean} = {term:'some filter', friend:true};
+  // const history = useHistory();
+ 
+  // useEffect (() => {
+  //   history.push({
+  //     pathname: '/users',
+  //     search: `?term = ${filter.term}&friend=${filter.friend}&page=${currentPage}`
+  //   })
+  // }, [filter, currentPage])
+
+
+
+
   return (
     <div>
 
